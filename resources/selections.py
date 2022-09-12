@@ -20,7 +20,6 @@ class SelectionList(Resource):
     """
 
     def get(self, **kwargs):
-        print("Got Kwargs: %s", kwargs)
         filter_args = request.args
         if len(filter_args):
             all_sports = get_filtered_selections(**filter_args)
@@ -36,7 +35,6 @@ class Selection(Resource):
 
     def post(self, **kwargs):
         json_data = request.get_json(force=True)
-        print("Creating a selection entity")
         name = json_data['name']
         event = json_data['event']
         price = json_data['price']
@@ -45,7 +43,6 @@ class Selection(Resource):
 
     def patch(self, selection_id, **kwargs):
         json_data = request.get_json(force=True)
-        print("Updating the selection entity")
         return update_selections_record(selection_id, json_data)
     
 

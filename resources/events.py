@@ -19,7 +19,6 @@ class EventList(Resource):
     """
 
     def get(self, **kwargs):
-        print("Got Kwargs: %s", kwargs)
         filter_args = request.args
         if len(filter_args):
             all_sports = get_filtered_event(**filter_args)
@@ -37,7 +36,6 @@ class Event(Resource):
 
     def post(self, **kwargs):
         json_data = request.get_json(force=True)
-        print("Creating a event entity")
         name = json_data['name']
         slug = json_data['slug']
         sport = json_data['sport']
@@ -47,7 +45,6 @@ class Event(Resource):
 
     def patch(self, slug, **kwargs):
         json_data = request.get_json(force=True)
-        print("Updating the event entity")
         return update_events_record(slug, json_data)
     
 

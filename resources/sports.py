@@ -19,7 +19,6 @@ class SportList(Resource):
     """
 
     def get(self, **kwargs):
-        print("Got Kwargs: %s", kwargs)
         filter_args = request.args
         if len(filter_args):
             all_sports = get_filtered_sport(**filter_args)
@@ -35,7 +34,6 @@ class Sport(Resource):
 
     def post(self, **kwargs):
         json_data = request.get_json(force=True)
-        print("Creating a sport entity")
         name = json_data['name']
         slug = json_data['slug']
         return create_sports_record(name=name, slug=slug)
@@ -43,7 +41,6 @@ class Sport(Resource):
 
     def patch(self, slug, **kwargs):
         json_data = request.get_json(force=True)
-        print("Updating the sports entity")
         name = json_data['name']
         return update_sports_record(slug, name)
     

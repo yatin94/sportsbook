@@ -21,7 +21,6 @@ def get_filtered_sport(slug=None, name=None, is_active=None, slug_like=None, nam
     - Args:
     - Returns:
     """
-    print(event_threshold)
     filtered_sports = Sport.filtered_sport(slug, name, is_active, slug_like, name_like, name_start, slug_start, event_threshold)
     filtered_sports = [dict(id=i[0], name=i[1], slug=i[2]) for i in filtered_sports]
     return filtered_sports
